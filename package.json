@@ -7,15 +7,28 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "commit": "cz"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.2",
         "@commitlint/config-conventional": "^17.0.2",
         "axios": "^0.25",
+        "commitizen": "^4.2.4",
+        "cz-conventional-changelog": "^3.3.0",
         "husky": "^8.0.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
-    }
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "husky": {
+        "hooks": {
+          "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+        }
+      }
 }
