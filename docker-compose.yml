@@ -1,0 +1,19 @@
+version: '3.9'
+
+networks:
+  Targg:
+    external: true
+
+services:
+  laravel:
+    image: appletrix
+    container_name: appletrix-system
+    user: root
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "8001:80" # WEBSMSD port mapping
