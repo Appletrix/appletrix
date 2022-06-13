@@ -19,7 +19,8 @@
         "husky": "^8.0.1",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "standard-version": "^9.5.0"
     },
     "config": {
         "commitizen": {
@@ -28,7 +29,7 @@
     },
     "husky": {
         "hooks": {
-          "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+            "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
         }
-      }
+    }
 }
