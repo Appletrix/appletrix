@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('crm_states', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
+            $table->string('hash')->index();
             $table->string('name',80);
             $table->string('UF',2);
             $table->tinyInteger('status');

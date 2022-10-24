@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('crm_clients', function (Blueprint $table) {
             $table->id();
             $table->foreignId('file_id')->constrained('crm_files_loads');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
+            $table->string('hash')->index();
             $table->string('title',10);
             $table->string('name',80);
             $table->string('slug',80);

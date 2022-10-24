@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('crm_hires', function (Blueprint $table) {
             $table->id();
             $table->foreignId('address_id')->constrained('crm_address');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
+            $table->string('hash')->index();
             $table->string('name', 150);
             $table->string('slug');
             $table->tinyText('description')->nullable();

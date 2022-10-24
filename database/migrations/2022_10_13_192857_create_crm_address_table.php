@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('crm_address', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
+            $table->string('hash')->index();
             $table->string('street',80)->nullable();
             $table->integer('number')->default(0);
             $table->string('district',80)->nullable();

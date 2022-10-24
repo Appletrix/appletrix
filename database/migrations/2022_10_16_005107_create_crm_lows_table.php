@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('crm_lows', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
+            $table->string('hash')->index();
             $table->timestamps();
         });
     }

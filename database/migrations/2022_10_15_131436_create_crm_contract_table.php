@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('crm_contracts', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid');
+            $table->uuid('uuid')->index()->unique()->default('uuid()');
             $table->foreignId('client_id')->constrained('crm_clients');
             $table->string('document',15)->index();
-
+            $table->string('hash')->index();
             $table->string('contract')->index();
             $table->string('referencedocs')->index();
             $table->string('documentfica')->nullable();
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
 
-            $table->foreign('document')->references('document')->on('crm_clients')->onDelete();
+            $table->foreign('document')->references('document')->on('crm_clients')->onDelete('cascade');
         });
     }
 
